@@ -11,8 +11,8 @@ def is_valid_date(date_str):
     bool: True if the date is valid, False otherwise.
   """
 
-  if not date_str or len(date_str) != 10:
-    return False
+  if not date_str or len(date_str) != 10: # //
+    return False # //
 
   try:
     # Split the date string into year, month, and day
@@ -28,20 +28,20 @@ def is_valid_date(date_str):
 
     # Check for valid day based on month (considering leap year)
     days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
     if month == 2:  # Check for leap year
-      if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
+      if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
         days_in_month[1] = 29
       else:
         days_in_month[1] = 28
+
     if day < 1 or day > days_in_month[month - 1]:
       return False
 
-  except ValueError:  # ValueError occurs if conversion to int fails
+  except ValueError:  # ValueError occurs if conversion to int fails (แปลงเป็น int ล้มเหลว)
     return False
 
   return True
-
-
 
 def is_valid_username(username, minlen):
   # Checks if the received username matches the required conditions.
